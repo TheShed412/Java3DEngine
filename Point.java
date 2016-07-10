@@ -46,19 +46,49 @@ public class Point
       throw new NotInitializedException("The point was not iniotialized properly");
   }//getPoint
 
-  public Point AddVectorToPoint(Vector v)
+  public Point AddVectorToPoint(Vector v) throws NotInitializedException
   {
+    if(checkInit()){
+      double[] vec = v.getVector();
+
+      for(int i=0; i<3; i++){
+          coor[i] += vec[i];
+      }//for
+    }else{
+      throw new NotInitializedException("Not Initialized Properly");
+    }//if else
     return this;
   }//AddVectorToPoint
 
-  public Point SubtractVectorFromPoint(Vector v)
+  public Point SubtractVectorFromPoint(Vector v) throws NotInitializedException
   {
+    if(checkInit()){
+      double[] vec = v.getVector();
+
+      for(int i=0; i<3; i++){
+          coor[i] -= vec[i];
+      }//for
+    }else{
+      throw new NotInitializedException("Not Initialized Properly");
+    }//if else
     return this;
   }//SubtractVectorFromPoint
 
-  public Vector SubtractPointFromPoint(Point p)
+  public Vector SubtractPointFromPoint(Point p) throws NotInitializedException, Not3DPointException
   {
-    Vector v = new Vector();
+    Vector v;
+    if(checkInit()){
+      double[] point = p.getPoint();
+      double[] vec = new double[3];
+
+      for(int i=0; i<3; i++){
+        vec[i] = coor[i]-point[i];
+      }//for
+
+      v = new Vector(vec);
+    }else{
+      throw new NotInitializedException("Not Initialized Properly");
+    }
     return v;
   }//SubtractPointFromPoint
 
@@ -66,6 +96,7 @@ public class Point
   {
     System.out.println(toString());
   }//drawPoint
+
   @Override
   public String toString()
   {

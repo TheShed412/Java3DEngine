@@ -44,4 +44,7 @@ public class Vector
     else
       throw new NotInitializedException("The Vector was not iniotialized properly");
   }//getVector
+
+
+
 }//Vector
