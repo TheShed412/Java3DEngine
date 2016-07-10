@@ -73,4 +73,11 @@ public class Vector
     return this;
   }//addVectorToVector
 
+  @Override
+  public String toString()
+  {
+    String str = "["+coor[0]+", "+coor[1]+", "+coor[2]+"]";
+    return str;
+  }//toString
+
 }//Vector
