@@ -21,14 +21,15 @@ class DrawPanel extends JPanel
     ///KeyListener Class///
     public class KeyAction implements KeyListener
     {
+      @Override
       public void keyTyped(KeyEvent e)
       {}//keyTyped
-
+      @Override
       public void keyPressed(KeyEvent e)
       {
         System.out.println("Key Pressed: "+KeyEvent.getKeyText(e.getKeyCode()));
       }//keyPressed
-
+      @Override
       public void keyReleased(KeyEvent e)
       {
         System.out.println("Key Released: "+KeyEvent.getKeyText(e.getKeyCode()));

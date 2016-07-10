@@ -73,6 +73,63 @@ public class Vector
     return this;
   }//addVectorToVector
 
+  public Vector XYRotate(double deg) throws NotInitializedException
+  {
+    if(checkInit()){
+
+        double rad = Math.toRadians(deg);
+        double[] newVec = new double[3];
+
+        newVec[0] = (Math.cos(rad)*coor[0])+((-Math.sin(rad))*coor[1]);
+        newVec[1] = (Math.sin(rad)*coor[0])+(Math.cos(rad)*coor[1]);
+        newVec[2] = coor[2];
+
+        coor = newVec;
+
+    }else{
+      throw new NotInitializedException("Not Initialized");
+    }
+    return this;
+  }//XYRotate
+
+  public Vector XZRotate(double deg) throws NotInitializedException
+  {
+    if(checkInit()){
+
+        double rad = Math.toRadians(deg);
+        double[] newVec = new double[3];
+
+        newVec[0] = (Math.cos(rad)*coor[0])+((Math.sin(rad))*coor[2]);
+        newVec[1] = coor[1];
+        newVec[2] = ((-Math.sin(rad))*coor[0])+(Math.cos(rad)*coor[2]);
+
+        coor = newVec;
+
+    }else{
+      throw new NotInitializedException("Not Initialized");
+    }
+    return this;
+  }//XZRotate
+
+  public Vector YZRotate(double deg) throws NotInitializedException
+  {
+    if(checkInit()){
+
+        double rad = Math.toRadians(deg);
+        double[] newVec = new double[3];
+
+        newVec[0] = coor[0];
+        newVec[1] = (Math.cos(rad)*coor[1])+((-Math.sin(rad))*coor[2]);
+        newVec[2] = ((Math.sin(rad))*coor[1])+(Math.cos(rad)*coor[2]);
+
+        coor = newVec;
+
+    }else{
+      throw new NotInitializedException("Not Initialized");
+    }
+    return this;
+  }//YZRotate
+
   @Override
   public String toString()
   {
