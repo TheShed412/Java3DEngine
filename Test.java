@@ -8,7 +8,7 @@ public class Test extends JFrame
     super("Game Frame");
     setContentPane(new DrawPanel());
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setSize(600, 600);
+    setSize(1200, 1200);
     setVisible(true);
   }//frame constructor
 
