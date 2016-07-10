@@ -1,8 +1,8 @@
 public class Point
 {
   //Coordinates for Point3
-  double[] coor;
-  boolean init = false;
+  private double[] coor;
+  private boolean init = false;
 
   public Point()
   {
@@ -28,5 +28,24 @@ public class Point
         this.coor = coor;
         init = true;
       }//if else
-  }//construc
-}//coordinate constructor
+  }//coordinate constructor
+
+  private boolean checkInit() throws NotInitializedException
+  {
+    if(init)
+      return init;
+    else
+      throw new NotInitializedException("Not properly Initialized");
+  }//check init
+
+  public double[] getPoint()
+  {
+    return coor;
+  }//getPoint
+
+  public Point AddVectorToPoint(Vector v)
+  {
+    return this;
+  }//AddVectorToPoint
+
+}//
