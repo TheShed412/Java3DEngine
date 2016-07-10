@@ -62,4 +62,15 @@ public class Point
     return v;
   }//SubtractPointFromPoint
 
-}//
+  public void drawPoint()
+  {
+    System.out.println(toString());
+  }//drawPoint
+  @Override
+  public String toString()
+  {
+    String str = "("+coor[0]+", "+coor[1]+", "+coor[2]+")";
+    return str;
+  }//toString
+
+}//Class
