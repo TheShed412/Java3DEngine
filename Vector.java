@@ -45,6 +45,32 @@ public class Vector
       throw new NotInitializedException("The Vector was not iniotialized properly");
   }//getVector
 
+  public Vector addVectorToVector(Vector v) throws NotInitializedException
+  {
+    if(checkInit()){
+      double[] vec = v.getVector();
 
+      for(int i=0; i<3; i++){
+        coor[i]+=vec[i];
+      }//for
+    }else{
+      throw new NotInitializedException("Not Initialized");
+    }//if else
+    return this;
+  }//addVectorToVector
+
+  public Vector subtractVectorFromVector(Vector v) throws NotInitializedException
+  {
+    if(checkInit()){
+      double[] vec = v.getVector();
+
+      for(int i=0; i<3; i++){
+        coor[i]-=vec[i];
+      }//for
+    }else{
+      throw new NotInitializedException("Not Initialized");
+    }//if else
+    return this;
+  }//addVectorToVector
 
 }//Vector

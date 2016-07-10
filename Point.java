@@ -46,7 +46,7 @@ public class Point
       throw new NotInitializedException("The point was not iniotialized properly");
   }//getPoint
 
-  public Point AddVectorToPoint(Vector v) throws NotInitializedException
+  public Point addVectorToPoint(Vector v) throws NotInitializedException
   {
     if(checkInit()){
       double[] vec = v.getVector();
@@ -60,7 +60,7 @@ public class Point
     return this;
   }//AddVectorToPoint
 
-  public Point SubtractVectorFromPoint(Vector v) throws NotInitializedException
+  public Point subtractVectorFromPoint(Vector v) throws NotInitializedException
   {
     if(checkInit()){
       double[] vec = v.getVector();
@@ -74,7 +74,7 @@ public class Point
     return this;
   }//SubtractVectorFromPoint
 
-  public Vector SubtractPointFromPoint(Point p) throws NotInitializedException, Not3DPointException
+  public Vector subtractPointFromPoint(Point p) throws NotInitializedException, Not3DPointException
   {
     Vector v;
     if(checkInit()){
