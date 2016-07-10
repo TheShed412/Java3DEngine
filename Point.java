@@ -97,6 +97,15 @@ public class Point
     System.out.println(toString());
   }//drawPoint
 
+  public void setPoint(Point p) throws NotInitializedException
+  {
+    if(checkInit()){
+      coor = p.getPoint();
+    }else{
+      throw new NotInitializedException("Not Initialized");
+    }
+  }//setPoint
+
   @Override
   public String toString()
   {

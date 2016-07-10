@@ -130,6 +130,18 @@ public class Vector
     return this;
   }//YZRotate
 
+  public Vector scale(double s0, double s1, double s2) throws NotInitializedException
+  {
+    if(checkInit()){
+      coor[0] *= s0;
+      coor[1] *= s1;
+      coor[2] *= s2;
+    }else{
+      throw new NotInitializedException("Not Initialized");
+    }//if else
+    return this;
+  }//scale
+
   @Override
   public String toString()
   {
