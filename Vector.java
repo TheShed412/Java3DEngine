@@ -133,9 +133,12 @@ public class Vector
   public Vector scale(double s0, double s1, double s2) throws NotInitializedException
   {
     if(checkInit()){
-      coor[0] *= s0;
-      coor[1] *= s1;
-      coor[2] *= s2;
+      double x = coor[0];
+      double y = coor[1];
+      double z = coor[2];
+      coor[0] = s0*x;
+      coor[1] = s1*y;
+      coor[2] = s2*z;
     }else{
       throw new NotInitializedException("Not Initialized");
     }//if else

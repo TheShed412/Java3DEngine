@@ -13,8 +13,8 @@ class DrawPanel extends JPanel
       Random r = new Random();
 
       for(int i=0; i<points.length; i++){
-        int x = r.nextInt(GameFrame.width());
-        int y = r.nextInt(GameFrame.height());
+        int x = r.nextInt(800);
+        int y = r.nextInt(600);
         int z = r.nextInt(10);
 
         points[i] = new Point(x, y, z);
@@ -25,8 +25,7 @@ class DrawPanel extends JPanel
     public void paintComponent(Graphics g)
     {
           //draw on g here e.g.
-      randomPoints();
-
+      super.paintComponent(g);
       for(int i=0; i<points.length; i++){
         Point p = points[i];
         double[] coor = new double[3];
@@ -40,7 +39,7 @@ class DrawPanel extends JPanel
 
     public DrawPanel()
     {
-      KeyListener listener = new KeyAction();
+      KeyListener listener = new KeyAction(this);
       addKeyListener(listener);
       setFocusable(true);
     }//KeyListen
@@ -48,6 +47,12 @@ class DrawPanel extends JPanel
     ///KeyListener Class///
     public class KeyAction implements KeyListener
     {
+      DrawPanel mainPanel;
+      public KeyAction(DrawPanel gp)
+      {
+        mainPanel=gp;
+      }
+
       @Override
       public void keyTyped(KeyEvent e)
       {}//keyTyped
@@ -60,7 +65,11 @@ class DrawPanel extends JPanel
               System.exit(0);
               break;
             case KeyEvent.VK_A:
-              System.out.println(points[0]);
+              try{System.out.println(points[0]);
+                  buttA();
+                  System.out.println(points[0]);}
+              catch(Exception ex){System.out.println(ex);}
+              break;
         }
       }//keyPressed
 
@@ -78,6 +87,8 @@ class DrawPanel extends JPanel
           points[i].setPoint(origin);
           points[i].addVectorToPoint(temp.scale(0.5,0.5,0.5));
         }//for
+          mainPanel.revalidate();
+          mainPanel.repaint();
       }//buttA
 
     }//Key Action

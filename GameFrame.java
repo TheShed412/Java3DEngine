@@ -11,7 +11,9 @@ public class GameFrame extends JFrame
   public GameFrame()
   {
     super("Game Frame");
-    setContentPane(new DrawPanel());
+    DrawPanel gamePanel = new DrawPanel();
+    gamePanel.randomPoints();
+    setContentPane(gamePanel);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setSize(WIDTH, HEIGHT);
     setVisible(true);

@@ -100,7 +100,10 @@ public class Point
   public void setPoint(Point p) throws NotInitializedException
   {
     if(checkInit()){
-      coor = p.getPoint();
+      double[] pArr = p.getPoint();
+      coor[0] = pArr[0];
+      coor[1] = pArr[1];
+      coor[2] = pArr[2];
     }else{
       throw new NotInitializedException("Not Initialized");
     }
