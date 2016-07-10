@@ -38,14 +38,28 @@ public class Point
       throw new NotInitializedException("Not properly Initialized");
   }//check init
 
-  public double[] getPoint()
+  public double[] getPoint() throws NotInitializedException
   {
-    return coor;
+    if(checkInit())
+      return coor;
+    else
+      throw new NotInitializedException("The point was not iniotialized properly");
   }//getPoint
 
   public Point AddVectorToPoint(Vector v)
   {
     return this;
   }//AddVectorToPoint
+
+  public Point SubtractVectorFromPoint(Vector v)
+  {
+    return this;
+  }//SubtractVectorFromPoint
+
+  public Vector SubtractPointFromPoint(Point p)
+  {
+    Vector v = new Vector();
+    return v;
+  }//SubtractPointFromPoint
 
 }//
