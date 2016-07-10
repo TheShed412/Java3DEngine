@@ -5,12 +5,25 @@ import java.awt.event.KeyListener;
 
 public class GameFrame extends JFrame
 {
+  private static final int WIDTH = 800;
+  private static final int HEIGHT = 600;
+
   public GameFrame()
   {
     super("Game Frame");
     setContentPane(new DrawPanel());
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setSize(800, 600);
+    setSize(WIDTH, HEIGHT);
     setVisible(true);
   }//gameFrame
+
+  public static int width()
+  {
+    return WIDTH;
+  }//getWidth
+
+  public static int height()
+  {
+    return HEIGHT;
+  }//getWidth
 }//GameFrame
