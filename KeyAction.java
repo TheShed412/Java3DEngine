@@ -7,10 +7,10 @@ import java.util.Random;
 
 public class KeyAction implements KeyListener
 {
-  DrawPanel mainPanel;
+  Camera mainPanel;
   Point[] points;
 
-  public KeyAction(DrawPanel gp, Point[] points)
+  public KeyAction(Camera gp, Point[] points)
   {
     mainPanel=gp;
     this.points = points;

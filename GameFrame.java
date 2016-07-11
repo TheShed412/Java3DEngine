@@ -5,13 +5,14 @@ import java.awt.event.KeyListener;
 
 public class GameFrame extends JFrame
 {
+    @SuppressWarnings("serial")
   private static final int WIDTH = 800;
   private static final int HEIGHT = 600;
 
   public GameFrame()
   {
     super("Game Frame");
-    DrawPanel gamePanel = new DrawPanel();
+    Camera gamePanel = new Camera(100);
     gamePanel.randomPoints();
     setContentPane(gamePanel);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
