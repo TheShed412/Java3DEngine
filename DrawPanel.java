@@ -15,7 +15,7 @@ class DrawPanel extends JPanel
       for(int i=0; i<points.length; i++){
         int x = r.nextInt(800);
         int y = r.nextInt(600);
-        int z = r.nextInt(10);
+        int z = 5;
 
         points[i] = new Point(x, y, z);
       }//for
