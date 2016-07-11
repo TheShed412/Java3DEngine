@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 
 public class GameFrame extends JFrame
 {
-    @SuppressWarnings("serial")
+    private static final long serialVersionUID = 123456789;
   private static final int WIDTH = 800;
   private static final int HEIGHT = 600;
 

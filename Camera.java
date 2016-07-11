@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Camera extends JPanel
 {
-    @SuppressWarnings("serial")
+    private static final long serialVersionUID = 123456789;
   private int minX = 0;
   private int maxX = 800;
   private int minY = 0;
