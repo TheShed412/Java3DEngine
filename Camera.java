@@ -8,13 +8,22 @@ public class Camera
   private int maxZ = 100;
   private boolean init = false;
   Point[] things;
+  DrawPanel panel;
 
-  public Camera(int maxX, int maxY, int maxZ, int points)
+  public Camera(DrawPanel dp, int points)
+  {
+    things[points];
+    panel = dp;
+    init = true;
+  }
+
+  public Camera(DrawPanel dp, int maxX, int maxY, int maxZ, int points)
   {
     this.maxX = maxX;
     this.maxY = maxY;
     this.maxZ = maxZ;
     things = new Point[points];
+    panel = dp;
     init = true;
   }//constructor
 
@@ -23,9 +32,19 @@ public class Camera
     return init;
   }//checkInit
 
-  public void drawScene()
+  public void drawScene() throws NotInitializedException
   {
+    if(checkInit()){
+      int checkPoint;
 
+      for(int i=0; i<things.length; i++){
+        checkPoint =
+      }//for
+    }else{
+      throw new NotInitializedException("Camera Not Initialized");
+    }//if else
   }//drawScene
+
+  public Points[] getThings()
 
 }//Camera
