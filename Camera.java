@@ -43,12 +43,24 @@ public class Camera extends JPanel
     return init;
   }//checkInit
 
-  public void drawScene() throws NotInitializedException
+  public void drawScene(Graphics g) throws NotInitializedException
   {
     if(checkInit()){
-      int checkPoint;
+        boolean xTrue;
+        boolean yTrue;
+        boolean zTrue;
+        double[] temp;
 
       for(int i=0; i<points.length; i++){
+          temp = points[i].getPoint();
+
+          xTrue = (temp[0]>=minX && temp[0]<=maxX);
+          yTrue = (temp[1]>=minY && temp[1]<=maxY);
+          zTrue = (temp[2]>=minZ && temp[2]<=maxZ);
+
+          if(xTrue&&yTrue&&zTrue){
+              g.fillRect((int)temp[0], (int)temp[1], 5, 5);
+          }//if
       }//for
     }else{
       throw new NotInitializedException("Camera Not Initialized");
@@ -60,9 +72,9 @@ public class Camera extends JPanel
     Random r = new Random();
 
     for(int i=0; i<points.length; i++){
-      int x = r.nextInt(800);
-      int y = r.nextInt(600);
-      int z = 5;
+      int x = r.nextInt(900)-100;
+      int y = r.nextInt(700)-100;
+      int z = r.nextInt(150)-50;
 
       points[i] = new Point(x, y, z);
     }//for
@@ -73,15 +85,18 @@ public class Camera extends JPanel
   {
         //draw on g here e.g.
     super.paintComponent(g);
-    for(int i=0; i<points.length; i++){
-      Point p = points[i];
-      double[] coor = new double[3];
-      try{
-        coor = p.getPoint();
-      }catch(Exception e){}
 
-      g.fillRect((int)coor[0], (int)coor[1], (int)coor[2], (int)coor[2]);
-    }//for
+    try{drawScene(g);}
+    catch(Exception e){}
+    // for(int i=0; i<points.length; i++){
+    //   Point p = points[i];
+    //   double[] coor = new double[3];
+    //   try{
+    //     coor = p.getPoint();
+    //   }catch(Exception e){}
+    //
+    //   g.fillRect((int)coor[0], (int)coor[1], 5, 5);
+    // }//for
   }//paintComponent
 
 
