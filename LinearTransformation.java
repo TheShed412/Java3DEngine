@@ -78,7 +78,7 @@ public class LinearTransformation
 
         for(int i=0; i<n; i++){
             for(int j=0; j<n; j++){
-                System.out.print(transformation[i][j]);
+                System.out.print(transformation[i][j]+" ");
             }//inner for
             System.out.println();
         }//outer for
