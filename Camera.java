@@ -72,6 +72,7 @@ public class Camera extends JPanel
   public void randomPoints()
   {
     Random r = new Random();
+    points.clear();
 
     for(int i=0; i<pointsToAdd; i++){
       int x = r.nextInt(900)-100;
@@ -80,7 +81,7 @@ public class Camera extends JPanel
 
       points.add(new Point(x, y, z));
     }//for
-
+    randomLine();
   }//randomPoints
 
   public void randomLine()
@@ -92,8 +93,13 @@ public class Camera extends JPanel
     int y2 = r.nextInt(600);
 
     LineSegment line = new LineSegment(x1, x2, y1, y2);
+    ArrayList<Point> segment = line.returnPointsInSegment();
+    Point temp;
 
-
+    for(int i=0; i<segment.size(); i++){
+      temp = segment.get(i);
+      points.add(temp);
+    }//for
 
   }//randomLines
 
