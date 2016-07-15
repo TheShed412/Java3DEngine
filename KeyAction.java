@@ -2,15 +2,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Random;
+import java.util.*;
 
 
 public class KeyAction implements KeyListener
 {
   Camera mainPanel;
-  Point[] points;
+  ArrayList<Point> points;
 
-  public KeyAction(Camera gp, Point[] points)
+  public KeyAction(Camera gp, ArrayList<Point> points)
   {
     mainPanel=gp;
     this.points = points;
@@ -56,10 +56,10 @@ public class KeyAction implements KeyListener
     Point origin = new Point(0,0,0);
     Vector temp;
 
-    for(int i=0; i<points.length; i++){
-      temp = points[i].subtractPointFromPoint(origin);
-      points[i].setPoint(origin);
-      points[i].addVectorToPoint(temp.scale(0.5,0.5,0.5));
+    for(int i=0; i<points.size(); i++){
+      temp = points.get(i).subtractPointFromPoint(origin);
+      points.get(i).setPoint(origin);
+      points.get(i).addVectorToPoint(temp.scale(0.5,0.5,0.5));
     }//for
       mainPanel.revalidate();
       mainPanel.repaint();
@@ -70,10 +70,10 @@ public class KeyAction implements KeyListener
     Point origin = new Point(0,0,0);
     Vector temp;
 
-    for(int i=0; i<points.length; i++){
-      temp = points[i].subtractPointFromPoint(origin);
-      points[i].setPoint(origin);
-      points[i].addVectorToPoint(temp.scale(2.0,2.0,2.0));
+    for(int i=0; i<points.size(); i++){
+      temp = points.get(i).subtractPointFromPoint(origin);
+      points.get(i).setPoint(origin);
+      points.get(i).addVectorToPoint(temp.scale(2.0,2.0,2.0));
     }//for
       mainPanel.revalidate();
       mainPanel.repaint();
@@ -84,10 +84,10 @@ public class KeyAction implements KeyListener
     Point origin = new Point(0,0,0);
     Vector temp;
 
-    for(int i=0; i<points.length; i++){
-      temp = points[i].subtractPointFromPoint(origin);
-      points[i].setPoint(origin);
-      points[i].addVectorToPoint(temp.XYRotate(15));
+    for(int i=0; i<points.size(); i++){
+      temp = points.get(i).subtractPointFromPoint(origin);
+      points.get(i).setPoint(origin);
+      points.get(i).addVectorToPoint(temp.XYRotate(15));
     }//for
       mainPanel.revalidate();
       mainPanel.repaint();

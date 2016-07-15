@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Random;
+import java.util.*;
 
 public class Camera extends JPanel
 {
@@ -14,24 +14,26 @@ public class Camera extends JPanel
   private int minZ = 0;
   private int maxZ = 100;
   private boolean init = false;
-  Point[] points;
+  private int pointsToAdd;
+  ArrayList<Point> points;
 
 
-  public Camera(int points)
+  public Camera(int pointsToAdd)
   {
-    this.points = new Point[points];
+    this.points = new ArrayList<Point>();
+    this.pointsToAdd = pointsToAdd;
     KeyAction listener = new KeyAction(this, this.points);
     addKeyListener(listener);
     setFocusable(true);
     init = true;
   }
 
-  public Camera(int maxX, int maxY, int maxZ, int points)
+  public Camera(int maxX, int maxY, int maxZ, int pointsToAdd)
   {
+    this.pointsToAdd = pointsToAdd;
     this.maxX = maxX;
     this.maxY = maxY;
     this.maxZ = maxZ;
-    this.points = new Point[points];
     KeyAction listener = new KeyAction(this, this.points);
     addKeyListener(listener);
     setFocusable(true);
@@ -51,15 +53,15 @@ public class Camera extends JPanel
         boolean zTrue;
         double[] temp;
 
-      for(int i=0; i<points.length; i++){
-          temp = points[i].getPoint();
+      for(int i=0; i<points.size(); i++){
+          temp = points.get(i).getPoint();
 
           xTrue = (temp[0]>=minX && temp[0]<=maxX);
           yTrue = (temp[1]>=minY && temp[1]<=maxY);
           zTrue = (temp[2]>=minZ && temp[2]<=maxZ);
 
           if(xTrue&&yTrue&&zTrue){
-              g.fillRect((int)temp[0], (int)temp[1], 5, 5);
+              g.fillRect((int)temp[0], (int)temp[1], 2, 2);
           }//if
       }//for
     }else{
@@ -71,15 +73,29 @@ public class Camera extends JPanel
   {
     Random r = new Random();
 
-    for(int i=0; i<points.length; i++){
+    for(int i=0; i<pointsToAdd; i++){
       int x = r.nextInt(900)-100;
       int y = r.nextInt(700)-100;
       int z = r.nextInt(150)-50;
 
-      points[i] = new Point(x, y, z);
+      points.add(new Point(x, y, z));
     }//for
 
   }//randomPoints
+
+  public void randomLine()
+  {
+    Random r = new Random();
+    int x1 = r.nextInt(800);
+    int x2 = r.nextInt(800);
+    int y1 = r.nextInt(600);
+    int y2 = r.nextInt(600);
+
+    LineSegment line = new LineSegment(x1, x2, y1, y2);
+
+
+
+  }//randomLines
 
   public void paintComponent(Graphics g)
   {
