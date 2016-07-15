@@ -61,7 +61,7 @@ public class Camera extends JPanel
           zTrue = (temp[2]>=minZ && temp[2]<=maxZ);
 
           if(xTrue&&yTrue&&zTrue){
-              g.fillRect((int)temp[0], (int)temp[1], 2, 2);
+              g.fillRect((int)temp[0], (int)temp[1], 5, 5);
           }//if
       }//for
     }else{
@@ -82,6 +82,7 @@ public class Camera extends JPanel
       points.add(new Point(x, y, z));
     }//for
     randomLine();
+    randomCircle();
   }//randomPoints
 
   public void randomLine()
@@ -102,6 +103,23 @@ public class Camera extends JPanel
     }//for
 
   }//randomLines
+
+  public void randomCircle()
+  {
+    Random r = new Random();
+    int x = r.nextInt(800);
+    int rad = r.nextInt(50);
+    int y = r.nextInt(600);
+
+    Circle circle = new Circle(x, y, rad);
+    ArrayList<Point> arc = circle.returnCircle();
+    Point temp;
+
+    for(int i=0; i<arc.size(); i++){
+      temp = arc.get(i);
+      points.add(temp);
+    }//for
+  }//randomCircle
 
   public void paintComponent(Graphics g)
   {
